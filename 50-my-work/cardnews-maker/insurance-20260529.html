@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>제왕절개 기록까지 꺼낸 보험사 — 법원은 달랐습니다</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- 출처: 매일경제 2026.05.24 | https://www.mk.co.kr/news/economy/12056458 -->
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Noto+Sans+KR:wght@400;700;900&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Noto Sans KR', sans-serif !important;
+  background: #0a0a0a !important;
+  display: flex; flex-direction: column; align-items: center;
+  gap: 20px; padding: 40px 20px;
+}
+.card {
+  width: 600px; height: 600px; position: relative; overflow: hidden;
+  border-radius: 8px; display: flex; flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+}
+.card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.card-overlay { position: absolute; inset: 0; }
+.card-center { justify-content: center; }
+.card-bottom { justify-content: flex-end; }
+.card-body { position: relative; z-index: 10; padding: 44px; }
+.card-body-center {
+  position: relative; z-index: 10; padding: 44px;
+  display: flex; flex-direction: column; justify-content: center; height: 100%;
+}
+.label {
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 10px !important; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  opacity: 0.75; margin-bottom: 16px;
+}
+.card-title {
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif !important;
+  font-weight: 900 !important; line-height: 1.15 !important;
+  margin-bottom: 18px; word-break: keep-all;
+}
+.card-sub {
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-size: 20px !important; line-height: 1.7 !important;
+  opacity: 0.9; word-break: keep-all;
+}
+.accent-bar { width: 36px; height: 3px; margin-bottom: 20px; }
+.badge {
+  display: inline-flex; align-items: center;
+  font-family: 'Outfit', sans-serif !important;
+  font-size: 12px !important; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 6px 16px; border-radius: 3px; margin-bottom: 18px;
+}
+.step-row { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 18px; }
+.step-dot {
+  width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Outfit', sans-serif !important; font-weight: 900; font-size: 15px;
+}
+.step-content { flex: 1; }
+.step-main {
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-size: 18px !important; font-weight: 700; line-height: 1.5; word-break: keep-all;
+}
+.step-sub {
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-size: 15px !important; line-height: 1.6;
+  opacity: 0.7; margin-top: 4px; word-break: keep-all;
+}
+.quote-wrap { border-left: 4px solid; padding: 16px 20px; margin: 14px 0; border-radius: 0 6px 6px 0; }
+.quote-text {
+  font-family: 'Noto Sans KR', sans-serif !important;
+  font-size: 19px !important; font-weight: 700; line-height: 1.65; word-break: keep-all;
+}
+.big-stat {
+  font-family: 'Outfit', sans-serif !important;
+  font-weight: 900 !important; line-height: 1 !important; letter-spacing: -2px;
+}
+.verdict-row { display: flex; align-items: center; gap: 12px; margin-top: 18px; }
+.verdict-icon {
+  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; font-size: 18px; font-weight: 900;
+}
+.verdict-text {
+  font-family: 'Outfit', 'Noto Sans KR', sans-serif !important;
+  font-size: 19px !important; font-weight: 700;
+}
+</style>
+</head>
+<body>
+
+<!-- 카드 1: cover — 중앙 정렬 -->
+<div class="card card-center">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1080&h=1080&fit=crop&q=80'); background-position:center top;"></div>
+  <div class="card-overlay" style="background:linear-gradient(135deg,rgba(0,0,0,0.1) 0%,rgba(0,0,0,0.55) 100%);"></div>
+  <div class="card-body-center">
+    <div class="badge" style="background:#b91c1c;color:#fff;">실제 판결 사례</div>
+    <div class="card-title" style="font-size:36px;color:#fff;">제왕절개 기록까지<br>꺼낸 보험사</div>
+    <div class="accent-bar" style="background:#ef4444;"></div>
+    <div class="card-sub" style="color:#fff;">법원의 판단은 달랐습니다</div>
+  </div>
+</div>
+
+<!-- 카드 2: situation — 하단 정렬 -->
+<div class="card card-bottom">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1080&h=1080&fit=crop&q=80');"></div>
+  <div class="card-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.68) 48%);"></div>
+  <div class="card-body">
+    <div class="label" style="color:#94a3b8;">CASE 01</div>
+    <div class="card-title" style="font-size:32px;color:#fff;">A씨에게 일어난 일</div>
+    <div class="step-row">
+      <div class="step-dot" style="background:rgba(255,255,255,0.2);color:#fff;">1</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#fff;">교통사고로 <strong>골반 손상</strong> 진단</div>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-dot" style="background:rgba(255,255,255,0.2);color:#fff;">2</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#fff;"><strong>보험금 청구</strong></div>
+        <div class="step-sub" style="color:#cbd5e1;">정당한 피해 보상 요청</div>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-dot" style="background:#b91c1c;color:#fff;">3</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#fca5a5;"><strong>보험사 지급 거절</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 카드 3: claim — 하단 정렬 -->
+<div class="card card-bottom">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1080&h=1080&fit=crop&q=80');"></div>
+  <div class="card-overlay" style="background:linear-gradient(180deg,rgba(5,5,5,0.0) 0%,rgba(5,5,5,0.68) 48%);"></div>
+  <div class="card-body">
+    <div class="label" style="color:#94a3b8;">CASE 02</div>
+    <div class="card-title" style="font-size:30px;color:#fff;">보험사가 꺼낸 말</div>
+    <div class="quote-wrap" style="border-color:#ef4444;background:rgba(239,68,68,0.1);">
+      <div class="quote-text" style="color:#fca5a5;">"다친 게 아니라<br>원래부터 골반이<br>안 좋았던 것 아닌가요?"</div>
+    </div>
+    <div class="card-sub" style="color:#e2e8f0;">사고와 부상 사이<br>연관 없다며 지급 거절</div>
+  </div>
+</div>
+
+<!-- 카드 4: shock — 하단 정렬 -->
+<div class="card card-bottom">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=1080&h=1080&fit=crop&q=80');"></div>
+  <div class="card-overlay" style="background:linear-gradient(180deg,rgba(0,0,0,0.0) 0%,rgba(0,0,0,0.65) 48%);"></div>
+  <div class="card-body">
+    <div class="badge" style="background:rgba(239,68,68,0.25);color:#fca5a5;border:1px solid rgba(248,113,113,0.5);">보험사가 꺼낸 자료</div>
+    <div class="card-title" style="font-size:30px;color:#fff;margin-bottom:16px;">이런 것까지<br>들고 나왔습니다</div>
+    <div class="step-row">
+      <div class="step-dot" style="background:#7f1d1d;color:#fca5a5;">①</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#fff;">제왕절개 분만 기록</div>
+        <div class="step-sub" style="color:#cbd5e1;">"골반이 원래 약했다"</div>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-dot" style="background:#7f1d1d;color:#fca5a5;">②</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#fff;">과거 교통사고 치료 이력</div>
+        <div class="step-sub" style="color:#cbd5e1;">"이미 다친 곳이 있었다"</div>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-dot" style="background:#7f1d1d;color:#fca5a5;">③</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#fca5a5;">결론: 사고와 무관 주장</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 카드 5: court — 하단 정렬 -->
+<div class="card card-bottom">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=1080&h=1080&fit=crop&q=80');"></div>
+  <div class="card-overlay" style="background:linear-gradient(180deg,rgba(0,20,10,0.0) 0%,rgba(0,20,10,0.65) 48%);"></div>
+  <div class="card-body">
+    <div class="label" style="color:#6ee7b7;">COURT RULING</div>
+    <div class="card-title" style="font-size:30px;color:#fff;">법원은<br>이렇게 봤습니다</div>
+    <div class="quote-wrap" style="border-color:#10b981;background:rgba(16,185,129,0.1);">
+      <div class="quote-text" style="color:#6ee7b7;">"사고 후 골반 영상에서<br>급성 외상 변화가<br>확인됩니다"</div>
+    </div>
+    <div class="verdict-row">
+      <div class="verdict-icon" style="background:#10b981;color:#fff;">✓</div>
+      <div class="verdict-text" style="color:#6ee7b7;">사고와의 연관 인정</div>
+    </div>
+  </div>
+</div>
+
+<!-- 카드 6: result — 중앙 정렬 -->
+<div class="card card-center">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1607863680198-23d4b2565df0?w=1080&h=1080&fit=crop&q=80');"></div>
+  <div class="card-overlay" style="background:linear-gradient(135deg,rgba(0,0,0,0.35) 0%,rgba(0,0,0,0.62) 100%);"></div>
+  <div class="card-body-center">
+    <div class="label" style="color:#fbbf24;">FINAL RULING</div>
+    <div class="big-stat" style="font-size:62px;color:#fbbf24;margin-bottom:8px;">2,500<span style="font-size:30px;">만원</span></div>
+    <div style="font-family:'Outfit','Noto Sans KR',sans-serif;font-size:22px;font-weight:700;color:#fff;margin-bottom:18px;">지급 명령</div>
+    <div class="accent-bar" style="background:#fbbf24;"></div>
+    <div class="card-sub" style="color:#fff;">기왕증 10% 반영 후에도<br>보험사 주장은 기각됐습니다</div>
+  </div>
+</div>
+
+<!-- 카드 7: tips — 하단 정렬 -->
+<div class="card card-bottom">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?w=1080&h=1080&fit=crop&q=80');"></div>
+  <div class="card-overlay" style="background:linear-gradient(180deg,rgba(15,23,42,0.0) 0%,rgba(15,23,42,0.65) 45%);"></div>
+  <div class="card-body">
+    <div class="badge" style="background:#1e3a5f;color:#93c5fd;border:1px solid rgba(147,197,253,0.4);">꼭 저장하세요</div>
+    <div class="card-title" style="font-size:26px;color:#fff;margin-bottom:18px;">사고 후 반드시<br>해야 할 것 3가지</div>
+    <div class="step-row">
+      <div class="step-dot" style="background:#1d4ed8;color:#fff;">1</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#93c5fd;">즉시 병원 방문</div>
+        <div class="step-sub" style="color:#cbd5e1;">치료 공백 = 보험사 빌미</div>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-dot" style="background:#1d4ed8;color:#fff;">2</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#93c5fd;">진료 기록 꼼꼼히 남기기</div>
+        <div class="step-sub" style="color:#cbd5e1;">어디가 어떻게 아픈지 구체적으로</div>
+      </div>
+    </div>
+    <div class="step-row">
+      <div class="step-dot" style="background:#1d4ed8;color:#fff;">3</div>
+      <div class="step-content">
+        <div class="step-main" style="color:#93c5fd;">합의 전 전문가 상담</div>
+        <div class="step-sub" style="color:#cbd5e1;">서명 후엔 추가 청구 불가</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 카드 8: cta — 중앙 정렬 (고정) -->
+<div class="card card-center">
+  <div class="card-bg" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1080&h=1080&fit=crop&q=80');"></div>
+  <div class="card-overlay" style="background:rgba(0,0,0,0.60);"></div>
+  <div class="card-body-center" style="align-items:center;text-align:center;">
+    <div style="font-family:'Outfit','Noto Sans KR',sans-serif;font-size:32px;font-weight:900;color:#fff;line-height:1.25;margin-bottom:24px;">보험사가 거절했다고<br>포기하지 마세요</div>
+    <div class="accent-bar" style="background:#ef4444;margin:0 auto 24px;"></div>
+    <div style="font-family:'Noto Sans KR',sans-serif;font-size:18px;color:#e5e7eb;line-height:1.8;margin-bottom:32px;">대부분은 이유도 모르고 포기합니다<br>하지만 전문가가 보면 달라집니다</div>
+    <div style="border-top:1px solid rgba(255,255,255,0.2);padding-top:28px;width:100%;">
+      <div style="font-family:'Outfit',sans-serif;font-size:24px;font-weight:900;color:#fff;letter-spacing:1px;margin-bottom:6px;">한세영 변호사</div>
+      <div style="font-family:'Outfit',sans-serif;font-size:20px;font-weight:700;color:#fbbf24;letter-spacing:2px;margin-bottom:6px;">1533-0854</div>
+      <div style="font-family:'Noto Sans KR',sans-serif;font-size:14px;color:#94a3b8;margin-bottom:20px;">서울시 서초구 서초대로 332, 9층</div>
+      <div style="display:inline-block;background:#b91c1c;color:#fff;font-family:'Noto Sans KR',sans-serif;font-size:15px;font-weight:700;padding:13px 30px;border-radius:4px;letter-spacing:1px;">저장해두고 필요할 때 연락하세요</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
