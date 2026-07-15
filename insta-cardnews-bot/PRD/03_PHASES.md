@@ -23,7 +23,7 @@
 - [x] Instagram이 프로페셔널(비즈니스/크리에이터) 계정이다
 - [x] Facebook 페이지 연결 여부 결정 -- 연결하지 않음 (Instagram Login 방식 사용)
 - [ ] Meta 개발자 앱에 "Instagram API with Instagram Login"이 등록되어 있고, `curl https://graph.instagram.com/v21.0/me` 로 테스트 토큰 호출이 성공한다
-- [ ] Playwright가 로컬에서 정상 설치·실행된다 (스모크 테스트 통과)
+- [x] Playwright가 로컬에서 정상 설치·실행된다 (스모크 테스트 통과 -- Chromium 설치 후 1080x1080 HTML을 실제 PNG로 캡처하는 것까지 확인함, 2026-07-15)
 
 > 이 단계가 끝나기 전에는 Phase 1의 "Instagram API 연동"과 "이미지 PNG 캡처" 기능을 실제로 테스트할 수 없습니다. 소재 분석·카드 구조화 로직은 이 단계와 무관하게 먼저 개발/테스트 가능합니다.
 
