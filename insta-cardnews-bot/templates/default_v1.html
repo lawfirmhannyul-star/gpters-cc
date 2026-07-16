@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<!-- insta-cardnews-bot: default_v1.html — 8-card Instagram carousel template -->
+<!-- Design reference: toss.im (insane-design/toss/design.md), BOLD: Friendly Fintech -->
+<!-- Each .card is exactly 1080x1080. Playwright should screenshot each #card-N element individually. -->
+<!-- {TOKEN} placeholders are filled by the generation script per card set. This file ships with -->
+<!-- example content (실손보험금 지급거절 사례) so it can be reviewed/screenshotted as-is. -->
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>insta-cardnews-bot — default_v1 template</title>
+<style>
+  :root {
+    --brand: #3182f6;
+    --brand-soft: #e8f3ff;
+    --text-primary: #191f28;
+    --text-secondary: #333d4b;
+    --text-tertiary: #4e5968;
+    --text-muted: #6b7684;
+    --border: #e5e8eb;
+    --border-strong: #d1d6db;
+    --surface: #ffffff;
+    --surface-soft: #f2f4f6;
+    --surface-softer: #f9fafb;
+    --accent-warn-bg: #ffeeee;
+    --accent-warn-fg: #e2434b;
+    --accent-tip-bg: #ffe0b0;
+    --accent-tip-fg: #dd7d02;
+
+    --font-display: 'Toss Product Sans', 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+    --font-body: 'Apple SD Gothic Neo', 'Noto Sans KR', sans-serif;
+
+    --radius-pill: 100px;
+    --radius-card: 14px;
+    --radius-tag: 12px;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #d9dde1;
+    font-family: var(--font-body);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .card {
+    width: 1080px;
+    height: 1080px;
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    color: var(--text-primary);
+  }
+
+  .card-1, .card-7 { background: var(--brand-soft); }
+  .card-2, .card-4, .card-8 { background: var(--surface); }
+  .card-3 { background: var(--surface-soft); }
+  .card-5 { background: var(--surface); }
+  .card-6 { background: var(--accent-tip-bg); }
+
+  .hook-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.6);
+    color: var(--brand);
+    border-radius: var(--radius-pill);
+    padding: 10px 24px;
+    font-weight: 700;
+    font-size: 24px;
+    width: fit-content;
+  }
+
+  .warn-badge {
+    display: inline-block;
+    background: var(--accent-warn-bg);
+    color: var(--accent-warn-fg);
+    border-radius: var(--radius-pill);
+    padding: 10px 24px;
+    font-weight: 700;
+    font-size: 24px;
+    width: fit-content;
+  }
+
+  .eyebrow {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    margin: 0 0 20px 0;
+  }
+
+  .headline {
+    font-family: var(--font-display);
+    font-size: 64px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    margin: 24px 0;
+    color: var(--text-primary);
+  }
+
+  .headline.on-tint { color: var(--text-primary); }
+
+  .body-text {
+    font-size: 28px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    max-width: 900px;
+  }
+
+  .case-quote {
+    font-size: 30px;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    background: var(--surface);
+    border-radius: var(--radius-card);
+    padding: 40px;
+    border: 1px solid var(--border);
+  }
+
+  .legal-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+  }
+  .legal-list li {
+    display: flex;
+    gap: 20px;
+    font-size: 28px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+  }
+  .legal-list .num {
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--brand-soft);
+    color: var(--brand);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+
+  .disclaimer-tag {
+    background: var(--surface-soft);
+    color: var(--text-muted);
+    border-radius: var(--radius-tag);
+    padding: 16px 20px;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
+  .tip-callout-label {
+    display: inline-block;
+    background: rgba(255,255,255,0.5);
+    color: var(--accent-tip-fg);
+    border-radius: var(--radius-pill);
+    padding: 8px 20px;
+    font-weight: 700;
+    font-size: 22px;
+    width: fit-content;
+  }
+
+  .summary-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .summary-list .item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    font-size: 30px;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+  .summary-list .check {
+    color: var(--brand);
+    font-weight: 700;
+    font-size: 30px;
+  }
+
+  .cta-button {
+    background: var(--brand);
+    color: #ffffff;
+    border-radius: var(--radius-pill);
+    padding: 24px 44px;
+    font-weight: 700;
+    font-size: 32px;
+    display: inline-block;
+    width: fit-content;
+    text-decoration: none;
+  }
+
+  .lawyer-info {
+    font-size: 24px;
+    color: var(--text-tertiary);
+    line-height: 1.6;
+  }
+
+  .footer-legal {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+  .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 22px;
+    color: var(--text-muted);
+  }
+  .page-num { font-family: ui-monospace, monospace; }
+</style>
+</head>
+<body>
+
+  <!-- Card 1: 후킹 -->
+  <div class="card card-1" id="card-1">
+    <div>
+      <span class="hook-badge">{EYEBROW_1}</span>
+      <h1 class="headline on-tint">{HEADLINE_1}</h1>
+      <p class="body-text">{BODY_1}</p>
+    </div>
+    <div>
+      <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
+      <div class="footer">
+        <span>@{HANDLE}</span>
+        <span class="page-num">1/8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: 쟁점 -->
+  <div class="card card-2" id="card-2">
+    <div>
+      <span class="warn-badge">{EYEBROW_2}</span>
+      <h1 class="headline">{HEADLINE_2}</h1>
+      <p class="body-text">{BODY_2}</p>
+    </div>
+    <div>
+      <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
+      <div class="footer">
+        <span>@{HANDLE}</span>
+        <span class="page-num">2/8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3: 사례 -->
+  <div class="card card-3" id="card-3">
+    <div>
+      <p class="eyebrow">{EYEBROW_3}</p>
+      <h1 class="headline">{HEADLINE_3}</h1>
+      <div class="case-quote">{BODY_3}</div>
+    </div>
+    <div>
+      <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
+      <div class="footer">
+        <span>@{HANDLE}</span>
+        <span class="page-num">3/8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 4: 법리 -->
+  <div class="card card-4" id="card-4">
+    <div>
+      <p class="eyebrow">{EYEBROW_4}</p>
+      <h1 class="headline">{HEADLINE_4}</h1>
+      <ul class="legal-list">
+        <li><span class="num">1</span><span>{LEGAL_POINT_1}</span></li>
+        <li><span class="num">2</span><span>{LEGAL_POINT_2}</span></li>
+        <li><span class="num">3</span><span>{LEGAL_POINT_3}</span></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
+      <div class="footer">
+        <span>@{HANDLE}</span>
+        <span class="page-num">4/8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 5: 결과 (광고규정 고지 문구 포함) -->
+  <div class="card card-5" id="card-5">
+    <div>
+      <p class="eyebrow">{EYEBROW_5}</p>
+      <h1 class="headline">{HEADLINE_5}</h1>
+      <p class="body-text">{BODY_5}</p>
+    </div>
+    <div>
+      <div class="disclaimer-tag">{DISCLAIMER_TEXT}</div>
+      <div class="footer-legal" style="margin-top:20px;">광고책임변호사 : 한세영 · 1533-0854</div>
+      <div class="footer">
+        <span>@{HANDLE}</span>
+        <span class="page-num">5/8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 6: 팁 -->
+  <div class="card card-6" id="card-6">
+    <div>
+      <span class="tip-callout-label">{EYEBROW_6}</span>
+      <h1 class="headline on-tint">{HEADLINE_6}</h1>
+      <p class="body-text" style="color: var(--text-primary);">{BODY_6}</p>
+    </div>
+    <div>
+      <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
+      <div class="footer">
+        <span>@{HANDLE}</span>
+        <span class="page-num">6/8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 7: 요약 -->
+  <div class="card card-7" id="card-7">
+    <div>
+      <span class="hook-badge">{EYEBROW_7}</span>
+      <h1 class="headline on-tint">{HEADLINE_7}</h1>
+      <div class="summary-list">
+        <div class="item"><span class="check">✓</span><span>{SUMMARY_POINT_1}</span></div>
+        <div class="item"><span class="check">✓</span><span>{SUMMARY_POINT_2}</span></div>
+        <div class="item"><span class="check">✓</span><span>{SUMMARY_POINT_3}</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
+      <div class="footer">
+        <span>@{HANDLE}</span>
+        <span class="page-num">7/8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 8: CTA -->
+  <div class="card card-8" id="card-8">
+    <div>
+      <p class="eyebrow">{EYEBROW_8}</p>
+      <h1 class="headline">{HEADLINE_8}</h1>
+      <p class="body-text">{BODY_8}</p>
+    </div>
+    <div>
+      <a class="cta-button" href="{PRIMARY_HREF}">{PRIMARY_CTA}</a>
+      <p class="lawyer-info" style="margin-top:28px;">광고책임변호사 {LAWYER_NAME} · {LAWYER_CONTACT}<br>{LAWYER_CHANNEL}</p>
+      <div class="footer" style="margin-top:20px;">
+        <span>@{HANDLE}</span>
+        <span class="page-num">8/8</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
