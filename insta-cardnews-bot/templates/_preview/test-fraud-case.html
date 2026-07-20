@@ -1,28 +1,13 @@
 <!DOCTYPE html>
-<!-- insta-cardnews-bot: default_v1.html — 7-card Instagram carousel template (v2.0) -->
-<!-- Design reference: toss.im (insane-design/toss/design.md), BOLD: Friendly Fintech -->
-<!-- v2.0 revision (user feedback after kkirikkiri v1.1): dropped the standalone summary -->
-<!-- card (redundant with 법리 카드) → 7 cards. Every card now carries a character -->
-<!-- illustration — two recurring people: the client (casual, navy sweater) for the -->
-<!-- problem-side cards, and 한세영 변호사 (navy blazer) for the cards where the lawyer's -->
-<!-- expertise/help is the point (법리, 결과, 팁, CTA). Card 5(결과) now frames the outcome -->
-<!-- as "resolved together with the lawyer", not just "재심사 청구로 뒤집힘". -->
-<!-- Each .card is exactly 1080x1080. Playwright should screenshot each #card-N element individually. -->
-<!-- {TOKEN} placeholders are filled by the generation script per card set. This file ships with -->
-<!-- example content (실손보험금 지급거절 사례) so it can be reviewed/screenshotted as-is. -->
-<!-- v2.1.1: Card 5's stat-compare is generic (STAT_LABEL/VALUE_BEFORE/AFTER) — not limited to money, -->
-<!-- so non-claim cases (e.g. 형사 사건 혐의없음 결정) can reuse the same before/after reveal. -->
-<!-- body-text/case-quote/legal-list sizes bumped for mobile-screen legibility (user feedback). -->
-<!-- v2.2 (kkirikkiri 냉정 평가 반영, 01_PRD.md 가정 원장 #21): "AI가 만든 티" 문제의 90%가 캐릭터 -->
-<!-- 일러스트에서 나온다는 진단 후, 일러스트를 카드 1(훅)에만 남기고 2~7번은 전부 타이포/숫자 -->
-<!-- 중심으로 전환. .giant-mark(배경 대형 타이포), .hero-stat(대형 숫자 강조), .highlight(키워드 -->
-<!-- 하이라이트 칩), .pull-quote(팁 카드 인용구 스타일), .firm-mark(CTA 카드 브랜드 타이포)가 -->
-<!-- 새로 추가됨. 카드 7은 실사 변호사 사진이 준비되면 .lawyer-photo로 교체 예정 (현재는 사진 -->
-<!-- 없이 완전 타이포 CTA). 카드 1 일러스트도 프롬프트를 손봐 그라디언트/반복 소품을 뺐다. -->
+<!-- insta-cardnews-bot: TEST content set — 허위입원 보험사기 혐의없음 사례 (김재진 유튜브 스크립트 기반) -->
+<!-- Uses default_v1.html's markup/CSS as-is (locked template) with new content filled in, to stress-test -->
+<!-- the template on a non-monetary "결과" (형사 혐의없음 결정, not a claim payout). Reuses existing -->
+<!-- characters/ assets — no new character generation needed. -->
+<!-- v2.2 (kkirikkiri 냉정 평가 반영): 일러스트는 카드 1에만 남기고 2~7번은 타이포/숫자 중심으로 전환. -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>insta-cardnews-bot — default_v1 template</title>
+<title>insta-cardnews-bot — test: 허위입원 보험사기 혐의없음</title>
 <style>
   :root {
     --brand: #3182f6;
@@ -73,14 +58,11 @@
     overflow: hidden;
   }
 
-  /* v2.0 background rhythm, 7 cards: 1 hook (blue) -> 2 gray -> 3 white -> 4 gray
-     -> 5 blue (reveal) -> 6 peach (tip) -> 7 white (CTA, blue button pops) */
   .card-1, .card-5 { background: var(--brand-soft); }
   .card-2, .card-4 { background: var(--surface-soft); }
   .card-3, .card-7 { background: var(--surface); }
   .card-6 { background: var(--accent-tip-bg); }
 
-  /* Unified pill badge system — every card uses the same shape now */
   .badge {
     display: inline-block;
     border-radius: var(--radius-pill);
@@ -136,7 +118,6 @@
     font-weight: 700;
   }
 
-  /* v2.2: 키워드 하이라이트 칩 — 본문 안에서 핵심 단어를 색 배경으로 강조 (일러스트 대신 시선을 끄는 장치) */
   .highlight {
     background: var(--accent-warn-bg);
     color: var(--accent-warn-fg);
@@ -145,7 +126,6 @@
     font-weight: 700;
   }
 
-  /* v2.2: 배경 대형 타이포 마크 — 카드 우하단(과거 캐릭터 자리)을 채우는 초대형 저채도 글자/기호 */
   .giant-mark {
     position: absolute;
     right: 8px;
@@ -162,7 +142,6 @@
   }
   .card > div { position: relative; z-index: 1; }
 
-  /* v2.2: 히어로 스탯 — 사례 카드의 핵심 숫자를 크게 노출 (카드 5 stat-compare와 다른, 단일 수치용) */
   .hero-stat {
     display: flex;
     flex-direction: column;
@@ -183,7 +162,6 @@
     font-weight: 600;
   }
 
-  /* v2.2: 팁 카드용 풀쿼트 — 일러스트 대신 굵은 좌측 바 + 대형 인용 텍스트로 시선을 끔 */
   .pull-quote {
     border-left: 8px solid var(--accent-tip-fg);
     padding: 8px 0 8px 36px;
@@ -195,7 +173,6 @@
     max-width: 880px;
   }
 
-  /* v2.2: CTA 카드 브랜드 타이포 마크 — 실사 사진 준비 전까지 법인명을 대형 타이포 앵커로 사용 */
   .firm-mark {
     font-family: var(--font-display);
     font-size: 56px;
@@ -213,7 +190,6 @@
     z-index: 0;
   }
 
-  /* v2.2: 실사 변호사 사진 슬롯 (준비되면 카드 7의 .firm-mark 대신 사용) */
   .lawyer-photo {
     position: absolute;
     right: 56px;
@@ -226,8 +202,6 @@
     box-shadow: 0 12px 32px rgba(25,31,40,0.14);
   }
 
-  /* v2.2.1: card 7 always has a real photo on the right now -- keep body text in the left column */
-  /* so it never runs under the photo (photo left edge sits at roughly x:684 of the 1080px card). */
   .card-7 .body-text { max-width: 600px; }
 
   .legal-list {
@@ -259,7 +233,6 @@
     font-size: 26px;
   }
 
-  /* Card 5: before/after stat comparison — gives the "reveal" a number */
   .stat-compare {
     display: flex;
     align-items: center;
@@ -276,7 +249,6 @@
   .stat-value.after { color: var(--brand); }
   .stat-arrow { font-size: 40px; color: var(--text-muted); font-weight: 300; }
 
-  /* v2.2: 카드 5는 일러스트가 빠지면서 stat-compare가 카드의 유일한 히어로 요소가 됨 — 확대 */
   .stat-compare-hero {
     padding: 64px 56px;
     margin-top: 48px;
@@ -349,151 +321,146 @@
 </head>
 <body>
 
-  <!-- Card 1: 후킹 — 의뢰인, 걱정스러운 표정 -->
+  <!-- Card 1: 후킹 — 의뢰인, 걱정스러운 표정 (일러스트 유지, v2.2 프롬프트 손질 예정) -->
   <div class="card card-1" id="card-1">
     <div>
-      <span class="badge badge-brand">{EYEBROW_1}</span>
+      <span class="badge badge-brand">보험사기 조사 실화</span>
       <div class="accent-rule on-tint"></div>
-      <h1 class="headline">{HEADLINE_1}</h1>
-      <p class="body-text">{BODY_1}</p>
+      <h1 class="headline">병원까지 90km,<br>이 거리가 보험사기가 될까요?</h1>
+      <p class="body-text">허위입원 보험사기로 신고당했다면, 실제로 아팠다는 말만으로는 충분하지 않습니다.</p>
     </div>
-    <img class="char-photo" src="characters/card1-worried.png" alt="" aria-hidden="true">
+    <img class="char-photo" src="characters/fraud-card1-worried-notice.png" alt="" aria-hidden="true">
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">1/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 2: 쟁점 — 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 2: 쟁점 — 타이포 중심 (v2.2) -->
   <div class="card card-2" id="card-2">
     <span class="giant-mark">?</span>
     <div>
-      <span class="badge badge-warn">{EYEBROW_2}</span>
+      <span class="badge badge-warn">쟁점</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_2}</h1>
-      <p class="body-text">{BODY_2}</p>
+      <h1 class="headline">외출 이력, 주말 입원…<br>이것만으로 유죄일까요?</h1>
+      <p class="body-text">입원 중 외출, 주말에만 반복된 입원, 치료 중 출근 이력 — 불리해 보일 수 있지만, 그것만으로 곧바로 <span class="highlight">보험사기</span>가 되는 것은 아닙니다.</p>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">2/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 3: 사례 — 타이포 중심 (일러스트 없음, v2.2). HERO_STAT은 사건의 핵심 숫자 하나 -->
-  <!-- (금액/거리/기간 등)를 크게 반복 노출해 스크롤 중에도 눈에 띄게 한다. -->
+  <!-- Card 3: 사례 — 타이포 중심 (v2.2) -->
   <div class="card card-3" id="card-3">
     <div>
-      <span class="badge badge-neutral">{EYEBROW_3}</span>
+      <span class="badge badge-neutral">실제 사례</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_3}</h1>
-      <div class="case-quote">{BODY_3}</div>
+      <h1 class="headline">말기암 환자의 주말 입원,<br>무엇이 쟁점이었나</h1>
+      <div class="case-quote">50대 후반 말기암 투병 중인 의뢰인은 생계 때문에 평일 출근, 주말에만 입원 치료를 이어왔습니다. 보험사는 이 패턴과 병원까지 <span class="amount">90km</span> 거리를 근거로 경찰에 진정을 제기했습니다.</div>
       <div class="hero-stat">
-        <span class="value">{HERO_STAT_VALUE}</span>
-        <span class="label">{HERO_STAT_LABEL}</span>
+        <span class="value">90km</span>
+        <span class="label">보험사가 지목한 자택-병원 거리</span>
       </div>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">3/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 4: 법리 — 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 4: 법리 — 타이포 중심 (v2.2) -->
   <div class="card card-4" id="card-4">
     <span class="giant-mark">3</span>
     <div>
-      <span class="badge badge-neutral">{EYEBROW_4}</span>
+      <span class="badge badge-neutral">법리 포인트</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_4}</h1>
+      <h1 class="headline">법무법인 한앤율이 짚어주는<br>3가지 포인트</h1>
       <ul class="legal-list">
-        <li><span class="num">1</span><span>{LEGAL_POINT_1}</span></li>
-        <li><span class="num">2</span><span>{LEGAL_POINT_2}</span></li>
-        <li><span class="num">3</span><span>{LEGAL_POINT_3}</span></li>
+        <li><span class="num">1</span><span>입원 필요성은 환자 본인이 아니라 담당 의사의 의학적 판단으로 결정됩니다</span></li>
+        <li><span class="num">2</span><span>보험사기는 속이려는 행위·착오·보험금 지급 사이 인과관계가 함께 증명돼야 합니다</span></li>
+        <li><span class="num">3</span><span>입원 패턴이 남다르다는 사정만으로 곧바로 보험사기가 되지는 않습니다</span></li>
       </ul>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">4/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 5: 결과 — 한세영 변호사 + 의뢰인 (함께 해결한 느낌), before/after 스탯 + 광고규정 고지 문구 -->
-  <!-- v2.1.2: HEADLINE_5 should stay factual/outcome-focused (e.g. "혐의없음으로 종결된 사건") — -->
-  <!-- putting "한세영 변호사와 함께 ~해낸" in the headline reads as overclaiming. The "helped together" -->
-  <!-- feeling belongs in DISCLAIMER_TEXT as a short lead-in sentence instead (subtle, not the headline). -->
+  <!-- Card 5: 결과 — 타이포 중심, before/after 스탯(비금전) + 광고규정 고지 문구 (v2.2) -->
   <div class="card card-5" id="card-5">
     <div>
-      <span class="badge badge-brand">{EYEBROW_5}</span>
+      <span class="badge badge-brand">사건 결과</span>
       <div class="accent-rule on-tint"></div>
-      <h1 class="headline">{HEADLINE_5}</h1>
+      <h1 class="headline">혐의없음으로<br>종결된 사건</h1>
       <div class="stat-compare stat-compare-hero">
         <div class="stat-item">
-          <span class="stat-label">{STAT_LABEL_BEFORE}</span>
-          <span class="stat-value before">{STAT_VALUE_BEFORE}</span>
+          <span class="stat-label">경찰 진정 접수</span>
+          <span class="stat-value before">보험사기 혐의</span>
         </div>
         <span class="stat-arrow">→</span>
         <div class="stat-item">
-          <span class="stat-label">{STAT_LABEL_AFTER}</span>
-          <span class="stat-value after">{STAT_VALUE_AFTER}</span>
+          <span class="stat-label">조사 종결 (약 2개월)</span>
+          <span class="stat-value after">혐의없음</span>
         </div>
       </div>
     </div>
     <div>
-      <div class="disclaimer-tag">{DISCLAIMER_TEXT}</div>
+      <div class="disclaimer-tag">법무법인 한앤율과 함께 대응한 사건입니다. 개별 사건의 결과이며, 모든 사건에 동일하게 적용되지 않습니다.</div>
       <div class="footer-legal" style="margin-top:20px;">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">5/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 6: 팁 — 풀쿼트 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 6: 팁 — 풀쿼트 타이포 중심 (v2.2) -->
   <div class="card card-6" id="card-6">
     <span class="giant-mark" style="color: var(--accent-tip-fg); opacity: 0.16;">&rdquo;</span>
     <div>
-      <span class="badge badge-tip">{EYEBROW_6}</span>
+      <span class="badge badge-tip">한세영 변호사의 TIP</span>
       <div class="accent-rule on-tint"></div>
-      <h1 class="headline">{HEADLINE_6}</h1>
-      <div class="pull-quote">{BODY_6}</div>
+      <h1 class="headline">이런 통지를 받으셨다면</h1>
+      <div class="pull-quote">의무기록과 결제 내역부터 정리해두세요. 진술하시기 전에, 저와 먼저 확인하시는 걸 권해드립니다.</div>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">6/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 7: CTA — 실사 변호사 사진 사용 (v2.2.1). photos/lawyer-hanseyoung.jpg는 고정 자산이므로 -->
-  <!-- 카드셋마다 바뀌지 않는다 (캐릭터 일러스트처럼 사건별로 새로 만들지 않음). -->
+  <!-- Card 7: CTA — 타이포 중심, 실사 사진 준비 전 (v2.2) -->
   <div class="card card-7" id="card-7">
     <img class="lawyer-photo" src="photos/lawyer-hanseyoung.jpg" alt="한세영 변호사">
     <div>
-      <span class="badge badge-neutral">{EYEBROW_7}</span>
+      <span class="badge badge-neutral">상담 안내</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_7}</h1>
-      <p class="body-text">{BODY_7}</p>
+      <h1 class="headline">보험사기 혐의로<br>조사 통지를 받으셨나요?</h1>
+      <p class="body-text">진술 전에, 제가 먼저 살펴봐드릴게요.</p>
     </div>
     <div>
-      <a class="cta-button" href="{PRIMARY_HREF}">{PRIMARY_CTA}</a>
+      <a class="cta-button" href="#">프로필 링크에서 상담 신청</a>
       <p class="cta-hint">↑ 프로필 링크를 눌러주세요 (이미지 자체는 클릭되지 않습니다)</p>
-      <p class="lawyer-info" style="margin-top:28px;">광고책임변호사 {LAWYER_NAME} · {LAWYER_CONTACT}<br>{LAWYER_CHANNEL}</p>
+      <p class="lawyer-info" style="margin-top:28px;">광고책임변호사 한세영 · 1533-0854<br>유튜브 @한세영변호사tv</p>
       <div class="footer" style="margin-top:20px;">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">7/7</span>
       </div>
     </div>

@@ -14,12 +14,20 @@ _*/
 _*.md
 sources/
 
+# Exception: insta-cardnews-bot's _preview/ holds actual worked card-news examples
+# (filled-in copy + rendered PNGs), not internal planning notes -- keep it tracked.
+!insta-cardnews-bot/templates/_preview/
+!insta-cardnews-bot/templates/_preview/**
+
 # Dependency and build caches
 node_modules/
 .venv/
 __pycache__/
 dist/
 build/
+
+# Intermediate build artifacts (base64 dumps used only to assemble preview HTML)
+*.b64.txt
 
 # Secrets
 .env

@@ -10,15 +10,6 @@
 <!-- Each .card is exactly 1080x1080. Playwright should screenshot each #card-N element individually. -->
 <!-- {TOKEN} placeholders are filled by the generation script per card set. This file ships with -->
 <!-- example content (실손보험금 지급거절 사례) so it can be reviewed/screenshotted as-is. -->
-<!-- v2.1.1: Card 5's stat-compare is generic (STAT_LABEL/VALUE_BEFORE/AFTER) — not limited to money, -->
-<!-- so non-claim cases (e.g. 형사 사건 혐의없음 결정) can reuse the same before/after reveal. -->
-<!-- body-text/case-quote/legal-list sizes bumped for mobile-screen legibility (user feedback). -->
-<!-- v2.2 (kkirikkiri 냉정 평가 반영, 01_PRD.md 가정 원장 #21): "AI가 만든 티" 문제의 90%가 캐릭터 -->
-<!-- 일러스트에서 나온다는 진단 후, 일러스트를 카드 1(훅)에만 남기고 2~7번은 전부 타이포/숫자 -->
-<!-- 중심으로 전환. .giant-mark(배경 대형 타이포), .hero-stat(대형 숫자 강조), .highlight(키워드 -->
-<!-- 하이라이트 칩), .pull-quote(팁 카드 인용구 스타일), .firm-mark(CTA 카드 브랜드 타이포)가 -->
-<!-- 새로 추가됨. 카드 7은 실사 변호사 사진이 준비되면 .lawyer-photo로 교체 예정 (현재는 사진 -->
-<!-- 없이 완전 타이포 CTA). 카드 1 일러스트도 프롬프트를 손봐 그라디언트/반복 소품을 뺐다. -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -136,7 +127,6 @@
     font-weight: 700;
   }
 
-  /* v2.2: 키워드 하이라이트 칩 — 본문 안에서 핵심 단어를 색 배경으로 강조 (일러스트 대신 시선을 끄는 장치) */
   .highlight {
     background: var(--accent-warn-bg);
     color: var(--accent-warn-fg);
@@ -145,7 +135,6 @@
     font-weight: 700;
   }
 
-  /* v2.2: 배경 대형 타이포 마크 — 카드 우하단(과거 캐릭터 자리)을 채우는 초대형 저채도 글자/기호 */
   .giant-mark {
     position: absolute;
     right: 8px;
@@ -162,7 +151,6 @@
   }
   .card > div { position: relative; z-index: 1; }
 
-  /* v2.2: 히어로 스탯 — 사례 카드의 핵심 숫자를 크게 노출 (카드 5 stat-compare와 다른, 단일 수치용) */
   .hero-stat {
     display: flex;
     flex-direction: column;
@@ -183,7 +171,6 @@
     font-weight: 600;
   }
 
-  /* v2.2: 팁 카드용 풀쿼트 — 일러스트 대신 굵은 좌측 바 + 대형 인용 텍스트로 시선을 끔 */
   .pull-quote {
     border-left: 8px solid var(--accent-tip-fg);
     padding: 8px 0 8px 36px;
@@ -195,7 +182,6 @@
     max-width: 880px;
   }
 
-  /* v2.2: CTA 카드 브랜드 타이포 마크 — 실사 사진 준비 전까지 법인명을 대형 타이포 앵커로 사용 */
   .firm-mark {
     font-family: var(--font-display);
     font-size: 56px;
@@ -213,7 +199,6 @@
     z-index: 0;
   }
 
-  /* v2.2: 실사 변호사 사진 슬롯 (준비되면 카드 7의 .firm-mark 대신 사용) */
   .lawyer-photo {
     position: absolute;
     right: 56px;
@@ -226,8 +211,6 @@
     box-shadow: 0 12px 32px rgba(25,31,40,0.14);
   }
 
-  /* v2.2.1: card 7 always has a real photo on the right now -- keep body text in the left column */
-  /* so it never runs under the photo (photo left edge sits at roughly x:684 of the 1080px card). */
   .card-7 .body-text { max-width: 600px; }
 
   .legal-list {
@@ -276,7 +259,6 @@
   .stat-value.after { color: var(--brand); }
   .stat-arrow { font-size: 40px; color: var(--text-muted); font-weight: 300; }
 
-  /* v2.2: 카드 5는 일러스트가 빠지면서 stat-compare가 카드의 유일한 히어로 요소가 됨 — 확대 */
   .stat-compare-hero {
     padding: 64px 56px;
     margin-top: 48px;
@@ -352,148 +334,143 @@
   <!-- Card 1: 후킹 — 의뢰인, 걱정스러운 표정 -->
   <div class="card card-1" id="card-1">
     <div>
-      <span class="badge badge-brand">{EYEBROW_1}</span>
+      <span class="badge badge-brand">보험금 분쟁 실화</span>
       <div class="accent-rule on-tint"></div>
-      <h1 class="headline">{HEADLINE_1}</h1>
-      <p class="body-text">{BODY_1}</p>
+      <h1 class="headline">850만원 보험금,<br>"기왕증"이라며 거절당했습니다</h1>
+      <p class="body-text">실손보험금 지급을 거절당했다면, 포기하기 전에 꼭 봐야 할 이야기입니다.</p>
     </div>
     <img class="char-photo" src="characters/card1-worried.png" alt="" aria-hidden="true">
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">1/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 2: 쟁점 — 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 2: 쟁점 — 타이포 중심 (v2.2) -->
   <div class="card card-2" id="card-2">
     <span class="giant-mark">?</span>
     <div>
-      <span class="badge badge-warn">{EYEBROW_2}</span>
+      <span class="badge badge-warn">쟁점</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_2}</h1>
-      <p class="body-text">{BODY_2}</p>
+      <h1 class="headline">보험사가 자주 쓰는 거절 사유,<br>정말 정당할까요?</h1>
+      <p class="body-text">가입 전부터 있던 질병(<span class="highlight">기왕증</span>)이라는 이유로 보험금 지급이 거절되는 경우, 실제로는 약관 해석이 잘못된 경우가 많습니다.</p>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">2/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 3: 사례 — 타이포 중심 (일러스트 없음, v2.2). HERO_STAT은 사건의 핵심 숫자 하나 -->
-  <!-- (금액/거리/기간 등)를 크게 반복 노출해 스크롤 중에도 눈에 띄게 한다. -->
+  <!-- Card 3: 사례 — 타이포 중심 (v2.2) -->
   <div class="card card-3" id="card-3">
     <div>
-      <span class="badge badge-neutral">{EYEBROW_3}</span>
+      <span class="badge badge-neutral">실제 사례</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_3}</h1>
-      <div class="case-quote">{BODY_3}</div>
+      <h1 class="headline">40대 의뢰인 A씨의 경우</h1>
+      <div class="case-quote">허리디스크 수술 후 보험금 <span class="amount">850만원</span>을 청구했지만, 보험사는 '기존에 있던 퇴행성 질환'이라며 지급을 거절했습니다. A씨는 처음엔 포기하려 했습니다.</div>
       <div class="hero-stat">
-        <span class="value">{HERO_STAT_VALUE}</span>
-        <span class="label">{HERO_STAT_LABEL}</span>
+        <span class="value">850만원</span>
+        <span class="label">청구했던 보험금</span>
       </div>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">3/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 4: 법리 — 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 4: 법리 — 타이포 중심 (v2.2) -->
   <div class="card card-4" id="card-4">
     <span class="giant-mark">3</span>
     <div>
-      <span class="badge badge-neutral">{EYEBROW_4}</span>
+      <span class="badge badge-neutral">법리 포인트</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_4}</h1>
+      <h1 class="headline">법무법인 한앤율이 짚어주는<br>3가지 포인트</h1>
       <ul class="legal-list">
-        <li><span class="num">1</span><span>{LEGAL_POINT_1}</span></li>
-        <li><span class="num">2</span><span>{LEGAL_POINT_2}</span></li>
-        <li><span class="num">3</span><span>{LEGAL_POINT_3}</span></li>
+        <li><span class="num">1</span><span>기왕증과 현재 질병의 인과관계는 보험사가 입증해야 합니다</span></li>
+        <li><span class="num">2</span><span>약관상 '기왕증 감액' 조항이 실제로 존재하는지 확인해야 합니다</span></li>
+        <li><span class="num">3</span><span>의료기록 재감정으로 인과관계를 다시 다툴 수 있습니다</span></li>
       </ul>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">4/7</span>
       </div>
     </div>
   </div>
 
   <!-- Card 5: 결과 — 한세영 변호사 + 의뢰인 (함께 해결한 느낌), before/after 스탯 + 광고규정 고지 문구 -->
-  <!-- v2.1.2: HEADLINE_5 should stay factual/outcome-focused (e.g. "혐의없음으로 종결된 사건") — -->
-  <!-- putting "한세영 변호사와 함께 ~해낸" in the headline reads as overclaiming. The "helped together" -->
-  <!-- feeling belongs in DISCLAIMER_TEXT as a short lead-in sentence instead (subtle, not the headline). -->
   <div class="card card-5" id="card-5">
     <div>
-      <span class="badge badge-brand">{EYEBROW_5}</span>
+      <span class="badge badge-brand">결과</span>
       <div class="accent-rule on-tint"></div>
-      <h1 class="headline">{HEADLINE_5}</h1>
+      <h1 class="headline">재심사 청구로<br>뒤집힌 결과</h1>
       <div class="stat-compare stat-compare-hero">
         <div class="stat-item">
-          <span class="stat-label">{STAT_LABEL_BEFORE}</span>
-          <span class="stat-value before">{STAT_VALUE_BEFORE}</span>
+          <span class="stat-label">거절 통보 금액</span>
+          <span class="stat-value before">0원</span>
         </div>
         <span class="stat-arrow">→</span>
         <div class="stat-item">
-          <span class="stat-label">{STAT_LABEL_AFTER}</span>
-          <span class="stat-value after">{STAT_VALUE_AFTER}</span>
+          <span class="stat-label">최종 지급 금액 (전액)</span>
+          <span class="stat-value after">850만원</span>
         </div>
       </div>
     </div>
     <div>
-      <div class="disclaimer-tag">{DISCLAIMER_TEXT}</div>
+      <div class="disclaimer-tag">법무법인 한앤율과 함께 대응한 사건입니다. 개별 사건의 결과이며, 모든 사건에 동일하게 적용되지 않습니다.</div>
       <div class="footer-legal" style="margin-top:20px;">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">5/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 6: 팁 — 풀쿼트 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 6: 팁 — 풀쿼트 타이포 중심 (v2.2) -->
   <div class="card card-6" id="card-6">
     <span class="giant-mark" style="color: var(--accent-tip-fg); opacity: 0.16;">&rdquo;</span>
     <div>
-      <span class="badge badge-tip">{EYEBROW_6}</span>
+      <span class="badge badge-tip">한세영 변호사의 TIP</span>
       <div class="accent-rule on-tint"></div>
-      <h1 class="headline">{HEADLINE_6}</h1>
-      <div class="pull-quote">{BODY_6}</div>
+      <h1 class="headline">거절 통보,<br>바로 포기하지 마세요</h1>
+      <div class="pull-quote">보험사의 1차 거절, 최종 결정이 아닙니다. 제가 직접 다시 검토해드릴게요.</div>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
       <div class="footer">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">6/7</span>
       </div>
     </div>
   </div>
 
-  <!-- Card 7: CTA — 실사 변호사 사진 사용 (v2.2.1). photos/lawyer-hanseyoung.jpg는 고정 자산이므로 -->
-  <!-- 카드셋마다 바뀌지 않는다 (캐릭터 일러스트처럼 사건별로 새로 만들지 않음). -->
+  <!-- Card 7: CTA — 타이포 중심, 실사 사진 준비 전 (v2.2) -->
   <div class="card card-7" id="card-7">
     <img class="lawyer-photo" src="photos/lawyer-hanseyoung.jpg" alt="한세영 변호사">
     <div>
-      <span class="badge badge-neutral">{EYEBROW_7}</span>
+      <span class="badge badge-neutral">상담 안내</span>
       <div class="accent-rule"></div>
-      <h1 class="headline">{HEADLINE_7}</h1>
-      <p class="body-text">{BODY_7}</p>
+      <h1 class="headline">보험금 거절 통보서,<br>아직 갖고 계신가요?</h1>
+      <p class="body-text">버리지 마세요. 제가 확인해드릴게요.</p>
     </div>
     <div>
-      <a class="cta-button" href="{PRIMARY_HREF}">{PRIMARY_CTA}</a>
+      <a class="cta-button" href="#">프로필 링크에서 상담 신청</a>
       <p class="cta-hint">↑ 프로필 링크를 눌러주세요 (이미지 자체는 클릭되지 않습니다)</p>
-      <p class="lawyer-info" style="margin-top:28px;">광고책임변호사 {LAWYER_NAME} · {LAWYER_CONTACT}<br>{LAWYER_CHANNEL}</p>
+      <p class="lawyer-info" style="margin-top:28px;">광고책임변호사 한세영 · 1533-0854<br>유튜브 @한세영변호사tv</p>
       <div class="footer" style="margin-top:20px;">
-        <span>@{HANDLE}</span>
+        <span>@hannyul_official</span>
         <span class="page-num">7/7</span>
       </div>
     </div>
