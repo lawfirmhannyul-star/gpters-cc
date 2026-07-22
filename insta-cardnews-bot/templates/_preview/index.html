@@ -68,7 +68,8 @@
      -> 5 blue (reveal) -> 6 peach (tip) -> 7 white (CTA, blue button pops) */
   .card-1, .card-5 { background: var(--brand-soft); }
   .card-2, .card-4 { background: var(--surface-soft); }
-  .card-3, .card-7 { background: var(--surface); }
+  .card-3 { background: var(--surface); }
+  .card-7 { background: var(--brand-soft); }
   .card-6 { background: var(--accent-tip-bg); }
 
   /* Unified pill badge system — every card uses the same shape now */
@@ -154,8 +155,8 @@
   .hero-stat {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-top: 32px;
+    gap: 10px;
+    margin-top: 48px;
   }
   .hero-stat .value {
     font-family: var(--font-display);
@@ -180,6 +181,39 @@
     font-weight: 700;
     color: var(--text-primary);
     max-width: 880px;
+  }
+
+  .tip-list {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 880px;
+  }
+  .tip-list li {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    font-size: 34px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .tip-list .check {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--accent-tip-fg);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 2px;
   }
 
   .firm-mark {
@@ -208,7 +242,8 @@
     object-fit: cover;
     object-position: 50% 15%;
     border-radius: var(--radius-card);
-    box-shadow: 0 12px 32px rgba(25,31,40,0.14);
+    border: 10px solid #ffffff;
+    box-shadow: 0 12px 32px rgba(25,31,40,0.18);
   }
 
   .card-7 .body-text { max-width: 600px; }
@@ -351,7 +386,6 @@
 
   <!-- Card 2: 쟁점 — 타이포 중심 (v2.2) -->
   <div class="card card-2" id="card-2">
-    <span class="giant-mark">?</span>
     <div>
       <span class="badge badge-warn">쟁점</span>
       <div class="accent-rule"></div>
@@ -375,8 +409,8 @@
       <h1 class="headline">40대 의뢰인 A씨의 경우</h1>
       <div class="case-quote">허리디스크 수술 후 보험금 <span class="amount">850만원</span>을 청구했지만, 보험사는 '기존에 있던 퇴행성 질환'이라며 지급을 거절했습니다. A씨는 처음엔 포기하려 했습니다.</div>
       <div class="hero-stat">
-        <span class="value">850만원</span>
         <span class="label">청구했던 보험금</span>
+        <span class="value">850만원</span>
       </div>
     </div>
     <div>
@@ -390,7 +424,6 @@
 
   <!-- Card 4: 법리 — 타이포 중심 (v2.2) -->
   <div class="card card-4" id="card-4">
-    <span class="giant-mark">3</span>
     <div>
       <span class="badge badge-neutral">법리 포인트</span>
       <div class="accent-rule"></div>
@@ -438,14 +471,17 @@
     </div>
   </div>
 
-  <!-- Card 6: 팁 — 풀쿼트 타이포 중심 (v2.2) -->
+  <!-- Card 6: 팁 — 체크리스트 타이포 중심 (v2.2.4) -->
   <div class="card card-6" id="card-6">
-    <span class="giant-mark" style="color: var(--accent-tip-fg); opacity: 0.16;">&rdquo;</span>
     <div>
       <span class="badge badge-tip">한세영 변호사의 TIP</span>
       <div class="accent-rule on-tint"></div>
       <h1 class="headline">거절 통보,<br>바로 포기하지 마세요</h1>
-      <div class="pull-quote">보험사의 1차 거절, 최종 결정이 아닙니다. 제가 직접 다시 검토해드릴게요.</div>
+      <ul class="tip-list">
+        <li><span class="check">&#10003;</span><span>보험사의 1차 거절, 최종 결정이 아닙니다</span></li>
+        <li><span class="check">&#10003;</span><span>이의제기·재심사 청구에는 정해진 기간이 있어요</span></li>
+        <li><span class="check">&#10003;</span><span>제가 직접 다시 검토해드릴게요</span></li>
+      </ul>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>

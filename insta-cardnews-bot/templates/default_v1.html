@@ -19,6 +19,10 @@
 <!-- 하이라이트 칩), .pull-quote(팁 카드 인용구 스타일), .firm-mark(CTA 카드 브랜드 타이포)가 -->
 <!-- 새로 추가됨. 카드 7은 실사 변호사 사진이 준비되면 .lawyer-photo로 교체 예정 (현재는 사진 -->
 <!-- 없이 완전 타이포 CTA). 카드 1 일러스트도 프롬프트를 손봐 그라디언트/반복 소품을 뺐다. -->
+<!-- v2.2.1~4: 카드 7에 실사 사진(.lawyer-photo) 적용 + 배경을 brand-soft로, 사진에 흰 프레임 추가. -->
+<!-- 카피에 1인칭 화법 + 헤드라인 숫자 앞세우기 적용. .giant-mark(배경 워터마크)는 그 자체가 AI -->
+<!-- 클리셰라는 재평가를 받고 전면 삭제 -- 카드 6은 .tip-list(체크리스트)로 대체. 카드 1 일러스트도 -->
+<!-- 캠페인마다 시간대/장소/구도를 다르게 재생성 (동일 그림 재탕 방지). -->
 <html lang="ko">
 <head>
 <meta charset="utf-8">
@@ -77,7 +81,8 @@
      -> 5 blue (reveal) -> 6 peach (tip) -> 7 white (CTA, blue button pops) */
   .card-1, .card-5 { background: var(--brand-soft); }
   .card-2, .card-4 { background: var(--surface-soft); }
-  .card-3, .card-7 { background: var(--surface); }
+  .card-3 { background: var(--surface); }
+  .card-7 { background: var(--brand-soft); } /* v2.2.4: was white -- bookends with card-1's blue so the real photo doesn't feel like a different account */
   .card-6 { background: var(--accent-tip-bg); }
 
   /* Unified pill badge system — every card uses the same shape now */
@@ -166,8 +171,8 @@
   .hero-stat {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-top: 32px;
+    gap: 10px;
+    margin-top: 48px;
   }
   .hero-stat .value {
     font-family: var(--font-display);
@@ -193,6 +198,40 @@
     font-weight: 700;
     color: var(--text-primary);
     max-width: 880px;
+  }
+
+  /* v2.2.4: 팁 체크리스트 — 배경 워터마크(giant-mark) 대신 실제 행동지침 2개로 카드 하단 공간을 채움 */
+  .tip-list {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 880px;
+  }
+  .tip-list li {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    font-size: 34px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .tip-list .check {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--accent-tip-fg);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 2px;
   }
 
   /* v2.2: CTA 카드 브랜드 타이포 마크 — 실사 사진 준비 전까지 법인명을 대형 타이포 앵커로 사용 */
@@ -223,7 +262,8 @@
     object-fit: cover;
     object-position: 50% 15%;
     border-radius: var(--radius-card);
-    box-shadow: 0 12px 32px rgba(25,31,40,0.14);
+    border: 10px solid #ffffff;
+    box-shadow: 0 12px 32px rgba(25,31,40,0.18);
   }
 
   /* v2.2.1: card 7 always has a real photo on the right now -- keep body text in the left column */
@@ -367,9 +407,8 @@
     </div>
   </div>
 
-  <!-- Card 2: 쟁점 — 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 2: 쟁점 — 타이포 중심 (일러스트 없음, v2.2. 배경 워터마크는 v2.2.4에서 제거 -- 그 자체가 AI 클리셰라는 리뷰 지적) -->
   <div class="card card-2" id="card-2">
-    <span class="giant-mark">?</span>
     <div>
       <span class="badge badge-warn">{EYEBROW_2}</span>
       <div class="accent-rule"></div>
@@ -394,8 +433,8 @@
       <h1 class="headline">{HEADLINE_3}</h1>
       <div class="case-quote">{BODY_3}</div>
       <div class="hero-stat">
-        <span class="value">{HERO_STAT_VALUE}</span>
         <span class="label">{HERO_STAT_LABEL}</span>
+        <span class="value">{HERO_STAT_VALUE}</span>
       </div>
     </div>
     <div>
@@ -407,9 +446,8 @@
     </div>
   </div>
 
-  <!-- Card 4: 법리 — 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 4: 법리 — 타이포 중심 (일러스트 없음, v2.2. 배경 워터마크는 v2.2.4에서 제거) -->
   <div class="card card-4" id="card-4">
-    <span class="giant-mark">3</span>
     <div>
       <span class="badge badge-neutral">{EYEBROW_4}</span>
       <div class="accent-rule"></div>
@@ -460,14 +498,17 @@
     </div>
   </div>
 
-  <!-- Card 6: 팁 — 풀쿼트 타이포 중심 (일러스트 없음, v2.2) -->
+  <!-- Card 6: 팁 — 체크리스트 타이포 중심 (일러스트 없음, v2.2.4 -- 배경 워터마크 대신 실제 행동지침 2개) -->
   <div class="card card-6" id="card-6">
-    <span class="giant-mark" style="color: var(--accent-tip-fg); opacity: 0.16;">&rdquo;</span>
     <div>
       <span class="badge badge-tip">{EYEBROW_6}</span>
       <div class="accent-rule on-tint"></div>
       <h1 class="headline">{HEADLINE_6}</h1>
-      <div class="pull-quote">{BODY_6}</div>
+      <ul class="tip-list">
+        <li><span class="check">&#10003;</span><span>{TIP_1}</span></li>
+        <li><span class="check">&#10003;</span><span>{TIP_2}</span></li>
+        <li><span class="check">&#10003;</span><span>{TIP_3}</span></li>
+      </ul>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>

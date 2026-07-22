@@ -60,7 +60,8 @@
 
   .card-1, .card-5 { background: var(--brand-soft); }
   .card-2, .card-4 { background: var(--surface-soft); }
-  .card-3, .card-7 { background: var(--surface); }
+  .card-3 { background: var(--surface); }
+  .card-7 { background: var(--brand-soft); }
   .card-6 { background: var(--accent-tip-bg); }
 
   .badge {
@@ -145,8 +146,8 @@
   .hero-stat {
     display: flex;
     flex-direction: column;
-    gap: 4px;
-    margin-top: 32px;
+    gap: 10px;
+    margin-top: 48px;
   }
   .hero-stat .value {
     font-family: var(--font-display);
@@ -171,6 +172,39 @@
     font-weight: 700;
     color: var(--text-primary);
     max-width: 880px;
+  }
+
+  .tip-list {
+    list-style: none;
+    padding: 0;
+    margin: 40px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    max-width: 880px;
+  }
+  .tip-list li {
+    display: flex;
+    gap: 22px;
+    align-items: flex-start;
+    font-size: 34px;
+    line-height: 1.45;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+  .tip-list .check {
+    flex-shrink: 0;
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: var(--accent-tip-fg);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 2px;
   }
 
   .firm-mark {
@@ -199,7 +233,8 @@
     object-fit: cover;
     object-position: 50% 15%;
     border-radius: var(--radius-card);
-    box-shadow: 0 12px 32px rgba(25,31,40,0.14);
+    border: 10px solid #ffffff;
+    box-shadow: 0 12px 32px rgba(25,31,40,0.18);
   }
 
   .card-7 .body-text { max-width: 600px; }
@@ -341,7 +376,6 @@
 
   <!-- Card 2: 쟁점 — 타이포 중심 (v2.2) -->
   <div class="card card-2" id="card-2">
-    <span class="giant-mark">?</span>
     <div>
       <span class="badge badge-warn">쟁점</span>
       <div class="accent-rule"></div>
@@ -365,8 +399,8 @@
       <h1 class="headline">말기암 환자의 주말 입원,<br>무엇이 쟁점이었나</h1>
       <div class="case-quote">50대 후반 말기암 투병 중인 의뢰인은 생계 때문에 평일 출근, 주말에만 입원 치료를 이어왔습니다. 보험사는 이 패턴과 병원까지 <span class="amount">90km</span> 거리를 근거로 경찰에 진정을 제기했습니다.</div>
       <div class="hero-stat">
-        <span class="value">90km</span>
         <span class="label">보험사가 지목한 자택-병원 거리</span>
+        <span class="value">90km</span>
       </div>
     </div>
     <div>
@@ -380,7 +414,6 @@
 
   <!-- Card 4: 법리 — 타이포 중심 (v2.2) -->
   <div class="card card-4" id="card-4">
-    <span class="giant-mark">3</span>
     <div>
       <span class="badge badge-neutral">법리 포인트</span>
       <div class="accent-rule"></div>
@@ -428,14 +461,17 @@
     </div>
   </div>
 
-  <!-- Card 6: 팁 — 풀쿼트 타이포 중심 (v2.2) -->
+  <!-- Card 6: 팁 — 체크리스트 타이포 중심 (v2.2.4) -->
   <div class="card card-6" id="card-6">
-    <span class="giant-mark" style="color: var(--accent-tip-fg); opacity: 0.16;">&rdquo;</span>
     <div>
       <span class="badge badge-tip">한세영 변호사의 TIP</span>
       <div class="accent-rule on-tint"></div>
       <h1 class="headline">이런 통지를 받으셨다면</h1>
-      <div class="pull-quote">의무기록과 결제 내역부터 정리해두세요. 진술하시기 전에, 저와 먼저 확인하시는 걸 권해드립니다.</div>
+      <ul class="tip-list">
+        <li><span class="check">&#10003;</span><span>의무기록과 결제 내역부터 정리해두세요</span></li>
+        <li><span class="check">&#10003;</span><span>휴대폰 위치기록 제출 여부도 신중히 결정하세요</span></li>
+        <li><span class="check">&#10003;</span><span>진술 전에, 저와 먼저 확인해보세요</span></li>
+      </ul>
     </div>
     <div>
       <div class="footer-legal">광고책임변호사 : 한세영 · 1533-0854</div>
